@@ -12,6 +12,9 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./user-profile-page.component.scss']
 })
 export class UserProfilePageComponent implements OnInit{
+  
+  user: any = {};
+
   @Input() userData = { Username: '', Password: '', Email: '' };
 
   constructor(
@@ -21,6 +24,15 @@ export class UserProfilePageComponent implements OnInit{
 
   ngOnInit(): void {
   }
+
+  getUser(): void {
+    const user = JSON.parse(localStorage.getItem('user') || '{}')
+
+    this.fetchApiData.getUser(user.Username).subscribe((result) => {
+      this.user = result;
+    })
+  }
+
   updateUser(): void {
     this.fetchApiData.editUser(this.userData).subscribe((result) => {
       // Logic for a successful user registration goes here! (To be implemented)

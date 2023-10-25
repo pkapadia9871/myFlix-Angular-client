@@ -30,32 +30,32 @@ export class MovieCardComponent {
       });
     }
 
-  genreDialog(genre: string): void {
-    this.dialog.open(DetailDialogComponent, {
-      data: {
-        title: genre.Name,
-        details: genre.Description
-      }
-    })
-  }
+    genreDialog(name: string, description: string): void {
+      this.dialog.open(DetailDialogComponent, {
+        data: {
+          title: name,
+          body: description
+        }
+      })
+    }
 
-  directorDialog(director: string): void {
-    this.dialog.open(DetailDialogComponent, {
-      data: {
-        title: director.Name,
-        details: director.Bio
-      }
-    })
-  }
+    directorDialog(name: string, bio: string): void {
+      this.dialog.open(DetailDialogComponent, {
+        data: {
+          title: name,
+          body: bio
+        }
+      })
+    }
 
-  descriptionDialog(description: string): void {
-    this.dialog.open(DetailDialogComponent, {
-      data: {
-        title: description,
-        details: ""
-      }
-    })
-  }
+    descriptionDialog(description: string): void {
+      this.dialog.open(DetailDialogComponent, {
+        data: {
+          title: '',
+          body: description
+        }
+      })
+    }
 
   addFav(movieID: string): void {
     this.fetchApiData.addFavoriteMovie(movieID).subscribe(() => {

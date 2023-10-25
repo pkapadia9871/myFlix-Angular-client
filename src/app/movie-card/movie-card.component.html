@@ -9,15 +9,15 @@
             <button
                 mat-button
                 color="primary"
-                (click)="genreDialog(movie.Genre)"
-            >
+                (click)="genreDialog(movie.Genre.Title, movie.Genre.Description)"
+                >
                 Genre
             </button>
             <button
                 mat-button
                 color="primary"
-                (click)="directorDialog(movie.Director)"
-            >
+                (click)="directorDialog(movie.Director.Name, movie.Director.Bio)"
+                >
                 Director
             </button>
             <button
@@ -30,15 +30,15 @@
             <button
             mat-button
             color="primary"
-            (click)="addFav(movieID)"
-        >
+            (click)="addFav(movie._id)"
+            >
         Add Favorite
         </button>
         <button
             mat-button
             color="primary"
-            (click)="deleteFav(movieID)"
-        >
+            (click)="deleteFav(movie._id)"
+            >
             Delete Favorite
         </button>
             <mat-icon>favorite_border</mat-icon>

@@ -38,7 +38,7 @@ export class UserLoginFormComponent implements OnInit {
             duration: 2000
         });
 
-        localStorage.setItem('user', result.user)
+        localStorage.setItem('user', JSON.stringify(result.user))
         localStorage.setItem('token', result.token)
         this.router.navigate(['movies']);
 

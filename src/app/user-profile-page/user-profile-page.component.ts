@@ -23,20 +23,17 @@ export class UserProfilePageComponent implements OnInit{
       public router: Router) { }
 
   ngOnInit(): void {
+    this.getUser();
   }
 
   getUser(): void {
-    const user = JSON.parse(localStorage.getItem('user') || '{}')
-
-    this.fetchApiData.getUser(user.Username).subscribe((result) => {
-      this.user = result;
-    })
+    this.user = JSON.parse(localStorage.getItem('user') || '{}')
   }
 
   updateUser(): void {
     this.fetchApiData.editUser(this.userData).subscribe((result) => {
       // Logic for a successful user registration goes here! (To be implemented)
-        localStorage.setItem('user', result.user)
+        localStorage.setItem('user', JSON.stringify(result.user))
         this.snackBar.open(result, 'Updated User', {
             duration: 2000
         })
